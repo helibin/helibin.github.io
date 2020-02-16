@@ -1,0 +1,290 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>md5 | Gridea</title>
+<link rel="shortcut icon" href="https://helibin.github.io/favicon.ico?v=1581823642928">
+<link href="https://cdn.remixicon.com/releases/v2.1.0/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://helibin.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="md5 | Gridea - Atom Feed" href="https://helibin.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+
+
+  
+  
+  
+  
+  
+  
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  #file {
+  ..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://helibin.github.io">
+  <img class="avatar" src="https://helibin.github.io/images/avatar.png?v=1581823642928" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              md5
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-02-16
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+<pre><code>  #file {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+  }
+
+  .row {
+    border-bottom: 1px solid gray;
+    padding: 10px;
+  }
+&lt;/style&gt;
+</code></pre>
+  <title>文件MD5值计算</title>
+</head>
+<body>
+  <div class="container">
+    <h1>文件MD5值计算</h1>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn btn-default">
+          <input type="file" id="file" />选择文件
+        </div>
+      </div>
+    </div>
+    <div id="process" style="display: none">
+      <div class="row">
+        <div class="col-xs-12">文件大小（Mac: 1MB=1000KB）: <span id='fileSize1K'>0</span></div>
+        <div class="col-xs-12">文件大小（Windows/Linux: 1MB=1024KB）: <span id='fileSize1K24'>0</span></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">校验文件进度: <span id='progressValue'>0</span>%</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">耗时: <span id='timeSpant'></span>秒</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">MD5值: <span id='hash'></span></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.min.js"></script>
+  <script>
+    document.getElementById('file').addEventListener('change', function () {
+      $("#process").slideDown()
+      $('#timeSpant').html('...')
+<pre><code>  let now = Date.now()
+  var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+    file = this.files[0],
+    chunkSize = 2097152,                             // Read in chunks of 2MB
+    chunks = Math.ceil(file.size / chunkSize),
+    currentChunk = 0,
+    spark = new SparkMD5.ArrayBuffer(),
+    fileReader = new FileReader();
+    const sizeContent = function(k) {
+      return file.size + '字节 = '
+        + (file.size / k).toFixed(2) + 'KB = '
+        + (file.size / k / k).toFixed(2) + 'MB = '
+        + (file.size / k / k / k).toFixed(2) + 'GB'
+    }
+    $('#fileSize1K').html(sizeContent(1000))
+    $('#fileSize1K24').html(sizeContent(1024))
+
+  fileReader.onload = function (e) {
+    console.log('read chunk nr', currentChunk + 1, 'of', chunks);
+    spark.append(e.target.result);                   // Append array buffer
+    currentChunk++;
+
+    if (currentChunk &lt; chunks) {
+      loadNext();
+    } else {
+      const spant = ((Date.now() - now) / 1000).toFixed(2)
+      const hash = spark.end();
+      $('#timeSpant').html(spant)
+      $('#hash').html(hash)
+      console.log('加载完成，耗时: ', spant, '秒');
+      console.info('hash值：', hash);  // Compute hash
+
+    }
+  };
+
+  fileReader.onerror = function () {
+    console.warn('oops, something went wrong.');
+  };
+
+  function loadNext() {
+    var start = currentChunk * chunkSize,
+      end = ((start + chunkSize) &gt;= file.size) ? file.size : start + chunkSize;
+
+    fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+    $(&quot;#progressValue&quot;).html(((currentChunk + 1) / chunks * 100).toFixed(2) * 1)
+  }
+
+  loadNext();
+});
+</code></pre>
+  </script>
+</html>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://helibin.github.io/post/hello-gridea">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://helibin.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
