@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>md5 | Gridea</title>
-<link rel="shortcut icon" href="https://helibin.github.io/favicon.ico?v=1581823642928">
+<link rel="shortcut icon" href="https://helibin.github.io/favicon.ico?v=1581823790807">
 <link href="https://cdn.remixicon.com/releases/v2.1.0/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://helibin.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="md5 | Gridea - Atom Feed" href="https://helibin.github.io/atom.xml">
@@ -11,22 +11,12 @@
 
 
 
-    <meta name="description" content="
+    <meta name="description" content="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
 
-
-  
-  
-  
-  
-  
-  
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-  #file {
-  ..." />
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -36,7 +26,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://helibin.github.io">
-  <img class="avatar" src="https://helibin.github.io/images/avatar.png?v=1581823642928" alt="">
+  <img class="avatar" src="https://helibin.github.io/images/avatar.png?v=1581823790807" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -90,130 +80,134 @@
                 2020-02-16
               </span>
               <span>
-                2 min read
+                5 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
-  <style>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;link href=&quot;https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;style&gt;
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-<pre><code>  #file {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    opacity: 0;
-  }
 
-  .row {
-    border-bottom: 1px solid gray;
-    padding: 10px;
-  }
-&lt;/style&gt;
-</code></pre>
-  <title>文件MD5值计算</title>
-</head>
-<body>
-  <div class="container">
-    <h1>文件MD5值计算</h1>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="btn btn-default">
-          <input type="file" id="file" />选择文件
-        </div>
-      </div>
-    </div>
-    <div id="process" style="display: none">
-      <div class="row">
-        <div class="col-xs-12">文件大小（Mac: 1MB=1000KB）: <span id='fileSize1K'>0</span></div>
-        <div class="col-xs-12">文件大小（Windows/Linux: 1MB=1024KB）: <span id='fileSize1K24'>0</span></div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">校验文件进度: <span id='progressValue'>0</span>%</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">耗时: <span id='timeSpant'></span>秒</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">MD5值: <span id='hash'></span></div>
-      </div>
-    </div>
-  </div>
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.min.js"></script>
-  <script>
+      #file {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 0;
+      }
+
+      .row {
+        border-bottom: 1px solid gray;
+        padding: 10px;
+      }
+    &lt;/style&gt;
+  &lt;title&gt;文件MD5值计算&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h1&gt;文件MD5值计算&lt;/h1&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-xs-12&quot;&gt;
+        &lt;div class=&quot;btn btn-default&quot;&gt;
+          &lt;input type=&quot;file&quot; id=&quot;file&quot; /&gt;选择文件
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;process&quot; style=&quot;display: none&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-xs-12&quot;&gt;文件大小（Mac: 1MB=1000KB）: &lt;span id='fileSize1K'&gt;0&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;col-xs-12&quot;&gt;文件大小（Windows/Linux: 1MB=1024KB）: &lt;span id='fileSize1K24'&gt;0&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-xs-12&quot;&gt;校验文件进度: &lt;span id='progressValue'&gt;0&lt;/span&gt;%&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-xs-12&quot;&gt;耗时: &lt;span id='timeSpant'&gt;&lt;/span&gt;秒&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-xs-12&quot;&gt;MD5值: &lt;span id='hash'&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
     document.getElementById('file').addEventListener('change', function () {
-      $("#process").slideDown()
+      $(&quot;#process&quot;).slideDown()
       $('#timeSpant').html('...')
-<pre><code>  let now = Date.now()
-  var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
-    file = this.files[0],
-    chunkSize = 2097152,                             // Read in chunks of 2MB
-    chunks = Math.ceil(file.size / chunkSize),
-    currentChunk = 0,
-    spark = new SparkMD5.ArrayBuffer(),
-    fileReader = new FileReader();
-    const sizeContent = function(k) {
-      return file.size + '字节 = '
-        + (file.size / k).toFixed(2) + 'KB = '
-        + (file.size / k / k).toFixed(2) + 'MB = '
-        + (file.size / k / k / k).toFixed(2) + 'GB'
-    }
-    $('#fileSize1K').html(sizeContent(1000))
-    $('#fileSize1K24').html(sizeContent(1024))
 
-  fileReader.onload = function (e) {
-    console.log('read chunk nr', currentChunk + 1, 'of', chunks);
-    spark.append(e.target.result);                   // Append array buffer
-    currentChunk++;
+      let now = Date.now()
+      var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
+        file = this.files[0],
+        chunkSize = 2097152,                             // Read in chunks of 2MB
+        chunks = Math.ceil(file.size / chunkSize),
+        currentChunk = 0,
+        spark = new SparkMD5.ArrayBuffer(),
+        fileReader = new FileReader();
+        const sizeContent = function(k) {
+          return file.size + '字节 = '
+            + (file.size / k).toFixed(2) + 'KB = '
+            + (file.size / k / k).toFixed(2) + 'MB = '
+            + (file.size / k / k / k).toFixed(2) + 'GB'
+        }
+        $('#fileSize1K').html(sizeContent(1000))
+        $('#fileSize1K24').html(sizeContent(1024))
 
-    if (currentChunk &lt; chunks) {
+      fileReader.onload = function (e) {
+        console.log('read chunk nr', currentChunk + 1, 'of', chunks);
+        spark.append(e.target.result);                   // Append array buffer
+        currentChunk++;
+
+        if (currentChunk &lt; chunks) {
+          loadNext();
+        } else {
+          const spant = ((Date.now() - now) / 1000).toFixed(2)
+          const hash = spark.end();
+          $('#timeSpant').html(spant)
+          $('#hash').html(hash)
+          console.log('加载完成，耗时: ', spant, '秒');
+          console.info('hash值：', hash);  // Compute hash
+
+        }
+      };
+
+      fileReader.onerror = function () {
+        console.warn('oops, something went wrong.');
+      };
+
+      function loadNext() {
+        var start = currentChunk * chunkSize,
+          end = ((start + chunkSize) &gt;= file.size) ? file.size : start + chunkSize;
+
+        fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
+        $(&quot;#progressValue&quot;).html(((currentChunk + 1) / chunks * 100).toFixed(2) * 1)
+      }
+
       loadNext();
-    } else {
-      const spant = ((Date.now() - now) / 1000).toFixed(2)
-      const hash = spark.end();
-      $('#timeSpant').html(spant)
-      $('#hash').html(hash)
-      console.log('加载完成，耗时: ', spant, '秒');
-      console.info('hash值：', hash);  // Compute hash
+    });
+  &lt;/script&gt;
 
-    }
-  };
-
-  fileReader.onerror = function () {
-    console.warn('oops, something went wrong.');
-  };
-
-  function loadNext() {
-    var start = currentChunk * chunkSize,
-      end = ((start + chunkSize) &gt;= file.size) ? file.size : start + chunkSize;
-
-    fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
-    $(&quot;#progressValue&quot;).html(((currentChunk + 1) / chunks * 100).toFixed(2) * 1)
-  }
-
-  loadNext();
-});
+&lt;/html&gt;
 </code></pre>
-  </script>
-</html>
 
               </div>
               <div class="toc-container">
