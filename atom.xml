@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://helibin.github.io</id>
     <title>Gridea</title>
-    <updated>2020-02-16T03:30:59.467Z</updated>
+    <updated>2020-02-16T03:31:49.552Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://helibin.github.io"/>
     <link rel="self" href="https://helibin.github.io/atom.xml"/>
@@ -10,135 +10,6 @@
     <logo>https://helibin.github.io/images/avatar.png</logo>
     <icon>https://helibin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[md5]]></title>
-        <id>https://helibin.github.io/post/md5</id>
-        <link href="https://helibin.github.io/post/md5">
-        </link>
-        <updated>2020-02-16T03:27:11.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
-  &lt;link href=&quot;https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;link href=&quot;https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;style&gt;
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      #file {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        opacity: 0;
-      }
-
-      .row {
-        border-bottom: 1px solid gray;
-        padding: 10px;
-      }
-    &lt;/style&gt;
-  &lt;title&gt;文件MD5值计算&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;div class=&quot;container&quot;&gt;
-    &lt;h1&gt;文件MD5值计算&lt;/h1&gt;
-    &lt;div class=&quot;row&quot;&gt;
-      &lt;div class=&quot;col-xs-12&quot;&gt;
-        &lt;div class=&quot;btn btn-default&quot;&gt;
-          &lt;input type=&quot;file&quot; id=&quot;file&quot; /&gt;选择文件
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div id=&quot;process&quot; style=&quot;display: none&quot;&gt;
-      &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-xs-12&quot;&gt;文件大小（Mac: 1MB=1000KB）: &lt;span id='fileSize1K'&gt;0&lt;/span&gt;&lt;/div&gt;
-        &lt;div class=&quot;col-xs-12&quot;&gt;文件大小（Windows/Linux: 1MB=1024KB）: &lt;span id='fileSize1K24'&gt;0&lt;/span&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-xs-12&quot;&gt;校验文件进度: &lt;span id='progressValue'&gt;0&lt;/span&gt;%&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-xs-12&quot;&gt;耗时: &lt;span id='timeSpant'&gt;&lt;/span&gt;秒&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-xs-12&quot;&gt;MD5值: &lt;span id='hash'&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.min.js&quot;&gt;&lt;/script&gt;
-  &lt;script&gt;
-    document.getElementById('file').addEventListener('change', function () {
-      $(&quot;#process&quot;).slideDown()
-      $('#timeSpant').html('...')
-
-      let now = Date.now()
-      var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
-        file = this.files[0],
-        chunkSize = 2097152,                             // Read in chunks of 2MB
-        chunks = Math.ceil(file.size / chunkSize),
-        currentChunk = 0,
-        spark = new SparkMD5.ArrayBuffer(),
-        fileReader = new FileReader();
-        const sizeContent = function(k) {
-          return file.size + '字节 = '
-            + (file.size / k).toFixed(2) + 'KB = '
-            + (file.size / k / k).toFixed(2) + 'MB = '
-            + (file.size / k / k / k).toFixed(2) + 'GB'
-        }
-        $('#fileSize1K').html(sizeContent(1000))
-        $('#fileSize1K24').html(sizeContent(1024))
-
-      fileReader.onload = function (e) {
-        console.log('read chunk nr', currentChunk + 1, 'of', chunks);
-        spark.append(e.target.result);                   // Append array buffer
-        currentChunk++;
-
-        if (currentChunk &lt; chunks) {
-          loadNext();
-        } else {
-          const spant = ((Date.now() - now) / 1000).toFixed(2)
-          const hash = spark.end();
-          $('#timeSpant').html(spant)
-          $('#hash').html(hash)
-          console.log('加载完成，耗时: ', spant, '秒');
-          console.info('hash值：', hash);  // Compute hash
-
-        }
-      };
-
-      fileReader.onerror = function () {
-        console.warn('oops, something went wrong.');
-      };
-
-      function loadNext() {
-        var start = currentChunk * chunkSize,
-          end = ((start + chunkSize) &gt;= file.size) ? file.size : start + chunkSize;
-
-        fileReader.readAsArrayBuffer(blobSlice.call(file, start, end));
-        $(&quot;#progressValue&quot;).html(((currentChunk + 1) / chunks * 100).toFixed(2) * 1)
-      }
-
-      loadNext();
-    });
-  &lt;/script&gt;
-
-&lt;/html&gt;
-</code></pre>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://helibin.github.io/post/hello-gridea</id>
