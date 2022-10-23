@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPU算力测试</title>
+  </head>
+  <body>
+    <button id="start">CPU算力测试</button>
+    <div><span id="timeSpent"></span></div>
+  </body>
+  <script>
+    function compute() {
+      let i = 1;
+      const n = 499;
+      const now = Date.now();
+      document.querySelector('#timeSpent').innerHTML = '计算中...';
+      for (let i = 0; i < n; i += 1) {
+        for (let j = 0; j < n; j += 1) {
+            console.log(i, j);
+        }
+      }
+      const spent = ((Date.now() - now) / 1000).toFixed(2);
+      console.log(spent, 'spent,,,');
+      document.querySelector('#timeSpent').innerHTML = '耗时: ' + spent + '秒';
+    }
+
+    document.querySelector('#start').addEventListener('click', compute);
+  </script>
+</html>

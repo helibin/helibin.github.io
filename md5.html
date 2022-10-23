@@ -51,7 +51,7 @@
         <div class="col-xs-12">校验文件进度: <span id='progressValue'>0</span>%</div>
       </div>
       <div class="row">
-        <div class="col-xs-12">耗时: <span id='timeSpant'></span>秒</div>
+        <div class="col-xs-12">耗时: <span id='timeSpent'></span>秒</div>
       </div>
       <div class="row">
         <div class="col-xs-12">MD5值: <span id='hash'></span></div>
@@ -62,14 +62,30 @@
   <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.min.js"></script>
   <script>
+    function compute() {
+      let i = 1;
+      const n = 99;
+      const now = Date.now()
+      for (let i = 0; i<n; i+=1) {
+        for (let j = 0; j<n; j+=1) {
+          console.log(i,j);
+        }
+      }
+      const spent = ((Date.now() - now) / 1000).toFixed(2)
+      $('#timeSpent').html(spent)
+      document.querySelector('#timeSpent').html = spent
+    }
+
+
     document.getElementById('file').addEventListener('change', function () {
       $("#process").slideDown()
-      $('#timeSpant').html('...')
+      $('#timeSpent').html('...')
 
       let now = Date.now()
       var blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice,
         file = this.files[0],
-        chunkSize = 2097152,                             // Read in chunks of 2MB
+        // chunkSize = 2097152,                             // Read in chunks of 2MB
+        chunkSize = 256
         chunks = Math.ceil(file.size / chunkSize),
         currentChunk = 0,
         spark = new SparkMD5.ArrayBuffer(),
@@ -85,17 +101,18 @@
 
       fileReader.onload = function (e) {
         console.log('read chunk nr', currentChunk + 1, 'of', chunks);
+        console.log(e.target.result, Array.prototype.map.call(new Uint8Array(e.target.result), x => ('00' + x.toString(16)).slice(-2)).join(' '), ',,,')
         spark.append(e.target.result);                   // Append array buffer
         currentChunk++;
 
         if (currentChunk < chunks) {
           loadNext();
         } else {
-          const spant = ((Date.now() - now) / 1000).toFixed(2)
+          const spent = ((Date.now() - now) / 1000).toFixed(2)
           const hash = spark.end();
-          $('#timeSpant').html(spant)
+          $('#timeSpent').html(spent)
           $('#hash').html(hash)
-          console.log('加载完成，耗时: ', spant, '秒');
+          console.log('加载完成，耗时: ', spent, '秒');
           console.info('hash值：', hash);  // Compute hash
 
         }
