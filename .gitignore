@@ -5,3 +5,7 @@ db.json
 node_modules/
 public/
 .deploy*/
+*/**/dist/*
+!*/**/dist/CNAME
+!*/**/dist/cpu.html
+!*/**/dist/md5.html
