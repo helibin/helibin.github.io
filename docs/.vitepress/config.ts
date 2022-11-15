@@ -2,7 +2,7 @@
  * @Author: Lybeen
  * @Email: helibin@139.com
  * @Date: 2021-08-17 21:37:08
- * @LastEditTime: 2022-11-12 16:57:59
+ * @LastEditTime: 2022-11-15 10:29:46
  * @LastEditors: Lybeen
  * @FilePath: /mine/helibin.github.io/docs/.vitepress/config.ts
  */
@@ -34,6 +34,7 @@ export default defineConfig({
     // logo: 'logo.svg',
     nav: [
       { text: '首页', link: '/' },
+      { text: '随笔', link: '/note/' },
       { text: '随笔', link: '/random/' },
       { text: '博客', link: 'https://blog.helibin.com' },
     ],
