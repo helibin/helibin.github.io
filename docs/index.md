@@ -1,5 +1,5 @@
 ---
-title: 彬仔博客
+title: Vitepress博客
 lang: zh-CN
 layout: home
 
@@ -15,7 +15,17 @@ hero:
       text: View on GitHub
       link: https://github.com/vuejs/vitepress
 
-footer:
-  message: 'Released under the MIT License.'
-  copyright: 'Copyright © 2019-present Evan You'
+features:
+  - icon: ⚡️
+    title: Vite, The DX that can't be beat
+    details: Lorem ipsum...
+  - icon: 🖖
+    title: Power of Vue meets Markdown
+    details: Lorem ipsum...
+  - icon: 🛠️
+    title: Simple and minimal, always
+    details: Lorem ipsum...
+
+lastUpdated: false
+aside: true
 ---

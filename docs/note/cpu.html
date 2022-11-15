@@ -1,0 +1,54 @@
+<!--
+ * @Author: Lybeen
+ * @Email: helibin@139.com
+ * @Date: 2022-10-23 12:04:31
+ * @LastEditTime: 2022-10-24 09:30:45
+ * @LastEditors: Lybeen
+ * @FilePath: /helibin.github.io/cpu.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPU算力测试</title>
+  </head>
+  <body>
+    <button class="cpuCompute" id="start399">CPU算力测试-399</button>
+    <button class="cpuCompute" id="start999">CPU算力测试-999</button>
+    <button class="cpuCompute" id="start3999">CPU算力测试-3999</button>
+    <div><span id="timeSpent" style="display: none">计算中...</span></div>
+  </body>
+  <script>
+    const eleList = document.querySelectorAll('.cpuCompute');
+    function compute(n) {
+      let i = 1;
+      const now = Date.now();
+      document.querySelector('#timeSpent').innerHTML = '计算中...';
+      document.querySelector('#timeSpent').style = 'display: block';
+      eleList.forEach(d => d.setAttribute('disabled', true));
+      setTimeout(() => {
+        for (let i = 0; i < n; i += 1) {
+          for (let j = 0; j < n; j += 1) {
+            console.log(i, j);
+          }
+        }
+        const spent = ((Date.now() - now) / 1000).toFixed(2);
+        console.log(spent, 'spent,,,');
+        document.querySelector('#timeSpent').innerHTML = '耗时: ' + spent + '秒';
+        eleList.forEach(d => d.removeAttribute('disabled'));
+      }, 10);
+    }
+
+    document.querySelector('#start399').addEventListener('click', () => {
+      compute(399);
+    });
+    document.querySelector('#start999').addEventListener('click', () => {
+      compute(999);
+    });
+    document.querySelector('#start3999').addEventListener('click', () => {
+      compute(3999);
+    });
+  </script>
+</html>
