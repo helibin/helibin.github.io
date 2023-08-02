@@ -2,9 +2,9 @@
  * @Author: Lybeen
  * @Email: helibin@139.com
  * @Date: 2022-10-23 12:04:31
- * @LastEditTime: 2022-10-24 09:30:45
+ * @LastEditTime: 2023-08-01 15:07:33
  * @LastEditors: Lybeen
- * @FilePath: /helibin.github.io/cpu.html
+ * @FilePath: /mine/helibin.github.io/docs/note/cpu.html
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +21,8 @@
     <div><span id="timeSpent" style="display: none">计算中...</span></div>
   </body>
   <script>
-    const eleList = document.querySelectorAll('.cpuCompute');
     function compute(n) {
+      const eleList = document.querySelectorAll('.cpuCompute');
       let i = 1;
       const now = Date.now();
       document.querySelector('#timeSpent').innerHTML = '计算中...';

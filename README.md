@@ -1,24 +1,44 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-17 21:36:36
- * @LastEditTime: 2021-08-17 21:36:36
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-07-31 10:48:12
+ * @LastEditors: Lybeen
  * @Description: In User Settings Edit
- * @FilePath: /mine/blog/README.md
+ * @FilePath: /mine/helibin.github.io/README.md
 -->
----
-home: true
-heroImage: /hero.png
-heroText: Hero 标题
-tagline: Hero 副标题
-actionText: 快速上手 →
-actionLink: /zh/guide/
-features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2018-present Evan You
----
+
+# Vitepress-blog
+
+## 💬 介绍
+
+个人静态网站和博客。
+
+## ✨ 特性
+
+- 📌 开箱即用
+- 💪 使用 Vue.js 最新特性开发
+- 🐆 全面基于 Vite，速度够快
+- 🖍️ markdown 中直接使用 vue 组件
+- ✔️ 配置简单，上手容易
+- 🚩 markdown 中直接使用 setup 语法糖
+- 📃 第三方组件库支持
+
+## 👀 启动
+
+```shell
+# 安装依赖
+pnpm i
+
+# 启动
+pnpm dev
+
+# 打包
+pnpm build
+
+# 预览打包
+pnpm serve
+```
+
+## 🕵️‍♀️ 更新日志
+
+参考 [CHANGELOG.md](./CHANGELOG.md)
